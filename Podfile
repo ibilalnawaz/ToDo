@@ -7,6 +7,8 @@ target 'TaskManagerRealm' do
   pod 'RealmSwift'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'FCAlertView'
+  pod 'M13Checkbox'
+  pod 'TableViewDragger'
   # Pods for TaskManagerRealm
 
 end

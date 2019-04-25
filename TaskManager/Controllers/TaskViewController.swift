@@ -9,6 +9,9 @@
 import UIKit
 import RealmSwift
 import FCAlertView
+import M13Checkbox
+import TableViewDragger
+
 
 class TaskViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,FCAlertViewDelegate {
     
@@ -20,11 +23,14 @@ class TaskViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     var selectedCategory : Category?
     
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addTask: UIButton!
     @IBOutlet weak var editButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+  
         
         editButton.frame = CGRect(x: 0, y: 0, width: 80, height: 40)
         editButton.layer.cornerRadius = 20
@@ -63,7 +69,7 @@ class TaskViewController: UIViewController,UITableViewDataSource,UITableViewDele
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search Task"
         searchController.searchBar.tintColor = UIColor.white
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = convertToNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: UIColor.white])
         definesPresentationContext = true
         
         if #available(iOS 11.0, *) {
@@ -83,18 +89,19 @@ class TaskViewController: UIViewController,UITableViewDataSource,UITableViewDele
         if let task = task?[indexPath.row]{
         cell.taskNameLabel.text = task.taskName
             
+            
         let attributeString =  NSMutableAttributedString(string: "\(task.taskName)")
 
         if task.done == true{
-            attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle,
-                                         value: NSUnderlineStyle.styleSingle.rawValue,
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                         value: NSUnderlineStyle.single.rawValue,
                                          range: NSMakeRange(0, attributeString.length))
             cell.taskNameLabel.attributedText = attributeString
             cell.taskNameLabel.textColor = UIColor.gray
             cell.taskImage.image = UIImage(named: "task_done_true")
         }else{
-            attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle,
-                                         value: NSUnderlineStyle.styleNone.rawValue,
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                         value: 0,
                                          range: NSMakeRange(0, attributeString.length))
             cell.taskNameLabel.attributedText = attributeString
             cell.taskNameLabel.textColor = UIColor.black
@@ -106,6 +113,7 @@ class TaskViewController: UIViewController,UITableViewDataSource,UITableViewDele
         }
         return cell
     }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let task = task?[indexPath.row]{
@@ -123,7 +131,7 @@ class TaskViewController: UIViewController,UITableViewDataSource,UITableViewDele
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             if let selectedTask = task?[indexPath.row]{
                 do{
@@ -209,4 +217,10 @@ extension TaskViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         loadData()
     }
+}
+
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import M13Checkbox
 
 class TaskTableViewCell: UITableViewCell {
 
     @IBOutlet weak var taskNameLabel: UILabel!
     @IBOutlet weak var taskImage: UIImageView!
     
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

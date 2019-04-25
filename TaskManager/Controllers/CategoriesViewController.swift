@@ -4,7 +4,7 @@
 //
 //  Created by Bilal Nawaz on 7/23/18.
 //  Copyright © 2018 Bilal Nawaz. All rights reserved.
-//
+//Bilal
 
 import UIKit
 import FCAlertView
@@ -47,7 +47,7 @@ class CategoriesViewController: UIViewController,UITableViewDataSource,UITableVi
             return true
         }
     }
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             AddCategoryAlert()
         }
@@ -67,7 +67,7 @@ class CategoriesViewController: UIViewController,UITableViewDataSource,UITableVi
         }
         return cell
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             if let selectedCategory = category?[indexPath.row]{
                 do{

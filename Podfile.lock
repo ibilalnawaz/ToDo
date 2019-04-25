@@ -3,16 +3,20 @@ PODS:
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - FCAlertView (1.4.0)
+  - M13Checkbox (3.2.2)
   - Realm (3.3.0):
     - Realm/Headers (= 3.3.0)
   - Realm/Headers (3.3.0)
   - RealmSwift (3.3.0):
     - Realm (= 3.3.0)
+  - TableViewDragger (1.1.1)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - FCAlertView
+  - M13Checkbox
   - RealmSwift
+  - TableViewDragger
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -26,9 +30,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FCAlertView: fdddd63381898c1d1a5a20c9f084fbd2c6d12f8b
+  M13Checkbox: a8c2491cfbbca10797925fd0b9154a782bf40d89
   Realm: 7d74ad6c5020432f58fe5e1df90bb6d97b2c7fef
   RealmSwift: b2fa31a09c22e246026766557405505eeaad2b01
+  TableViewDragger: 28692c57e3dfd32d5bc985e41f2e986f99da6baa
 
-PODFILE CHECKSUM: de04ad53e8c0ad349c019593af27dd1a56413f9f
+PODFILE CHECKSUM: 33ce99d171f6c4f45b6ad9bef4061bfc55afdd19
 
 COCOAPODS: 1.4.0
